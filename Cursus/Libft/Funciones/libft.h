@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:25:06 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/17 19:09:53 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/04/18 00:18:35 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int		ft_isprint(int val);
 int		ft_strlen(const char *str);
 int		ft_tolower(int letter);
 int		ft_toupper(int letter);
+size_t	ft_strlcpy(char *org, char *dst, size_t sizedst);
 
 #endif
