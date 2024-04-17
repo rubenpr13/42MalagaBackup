@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-int ft_strlcpy (char *org, char *dst, int sizedst)
+size_t ft_strlcpy (char *org, char *dst, size_t sizedst)
 {
     int i;
 
