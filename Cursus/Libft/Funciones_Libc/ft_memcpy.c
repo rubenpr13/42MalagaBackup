@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 18:25:06 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/18 00:18:35 by ruben-dev        ###   ########.fr       */
+/*   Created: 2024/04/18 13:34:34 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 13:47:17 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
+void	ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char	*temp_dst;
+	unsigned char	*temp_src;
 
-int		ft_isalnum(int val);
-int		ft_isalpha(int val);
-int		ft_isascii(int val);
-int		ft_isdigit(int val);
-int		ft_isprint(int val);
-int		ft_strlen(const char *str);
-int		ft_tolower(int letter);
-int		ft_toupper(int letter);
-size_t	ft_strlcpy(char *org, char *dst, size_t sizedst);
+	if (src == NULL && dst == NULL)
+		return (dst);
 
-#endif
+	temp_dst = (unsigned char *) dst;
+	temp_src = (unsigned char *) src;
+	while (n > 0)
+	{
+		*(temp_dst++) = *(temp_src++);
+		n--;
+	}
+	return (dst);
+}
