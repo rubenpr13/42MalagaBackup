@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:34:12 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 12:42:12 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 15:53:55 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 16:03:34 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include "libft.h"
+
+char	ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	
 }

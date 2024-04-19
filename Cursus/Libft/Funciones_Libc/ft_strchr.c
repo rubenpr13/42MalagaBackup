@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 13:47:12 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 10:44:20 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 14:02:55 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 14:49:50 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-char	*ft_strcpy(char *dest, char *src)
+char	ft_strchr(const char *s, int c)
 {
-	int	i;
+	char			mod_c;
+	unsigned int	i;
 
+	mod_c = (char) c;
 	i = 0;
-	while (src[i] != '\0')
+	if (mod_c == '\0')
+		return ('\0');
+
+	while (s[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (mod_c == s[i])
+		{
+			return ((char *) &s[i]);
+		}
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (0);
 }

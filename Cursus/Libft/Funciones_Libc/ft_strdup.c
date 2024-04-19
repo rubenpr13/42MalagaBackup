@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 14:00:27 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 14:03:47 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 16:35:51 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 16:37:25 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_str_is_uppercase(char *str)
+#include "libft.h"
+
+char	ft_strdup(const char *s1)
 {
-	int		i;
-	char	x;
 
-	i = 0;
-	if (str[i] == '\0')
-	{
-		return (1);
-	}
-	while (str[i] != '\0')
-	{
-		x = str[i];
-		if (x < 'A' || x > 'Z')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
 }

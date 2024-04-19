@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 19:03:48 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/17 19:04:49 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 13:49:41 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 14:02:36 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_strlen(const char *str)
+void	ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	
 }

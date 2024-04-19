@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 14:04:40 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 14:17:32 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 12:52:03 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 13:21:03 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_str_is_printable(char *str)
+#include "libft.h"
+
+void	ft_memset(void *b, int c, size_t len)
 {
-	int		i;
-	char	x;
+	unsigned char	*temp_b;
 
-	i = 0;
-	if (str[i] == '\0')
+	temp_b = (unsigned char *) b;
+	while (len > 0)
 	{
-		return (1);
+		*(temp_b++) = (unsigned char) c;
+		len--;
 	}
-	while (str[i] != '\0')
-	{
-		x = str[i];
-		if (x < ' ' || x > '~')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	return (b);
 }

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:43:10 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 13:26:28 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 13:26:14 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 13:31:08 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	int		i;
-	char	x;
+	unsigned char	*temp_s;
 
-	i = 0;
-	while (str[i] != '\0')
+	temp_s = (unsigned char *) s;
+	while (n > 0)
 	{
-		x = str[i];
-		if ((x < 'A') || (x > 'Z' && x < 'a') || (x > 'z'))
-		{
-			return (0);
-		}
-		i++;
+		*(temp_s++) = 0;
+		n--;
 	}
-	return (1);
 }

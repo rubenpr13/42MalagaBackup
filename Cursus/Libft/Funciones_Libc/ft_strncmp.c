@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinazo- <rpinazo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 13:28:48 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/02/06 13:50:40 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/04/18 14:59:05 by ruben-dev         #+#    #+#             */
+/*   Updated: 2024/04/18 15:57:52 by ruben-dev        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_str_is_numeric(char *str)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		i;
-	char	x;
+	size_t	i;
 
 	i = 0;
-	if (str[i] == '\0')
+	while (i < n)
 	{
-		return (1);
-	}
-	while (str[i] != '\0')
-	{
-		x = str[i];
-		if ((x < '0') || (x > '9'))
-		{
-			return (0);
-		}
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (1);
+	return (0);
 }
