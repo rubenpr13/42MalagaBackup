@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 14:43:24 by ruben-dev         #+#    #+#             */
-/*   Updated: 2024/04/18 14:54:04 by ruben-dev        ###   ########.fr       */
+/*   Created: 2024/04/19 10:46:32 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/04/19 14:16:08 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	char			mod_c;
 	char			*res;
 	unsigned int	i;
 
 	mod_c = (char) c;
+	res = NULL;
 	i = 0;
 	while (s[i] != '\0')
 	{

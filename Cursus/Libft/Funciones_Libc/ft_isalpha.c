@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:47:01 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:50:32 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:29:59 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalpha(int val)
 {
-	if (val >= 'a' && val <= 'z' || val >= 'A' && val <= 'Z')
+	if ((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z'))
 	{
 		return (val);
 	}

@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:05:38 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/17 19:06:49 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:55:22 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_tolower(int letter)
 {
-	if (letter > 'A' && letter < 'Z')
+	if (letter >= 'A' && letter <= 'Z')
 	{
 		return (letter + 32);
 	}

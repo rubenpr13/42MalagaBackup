@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:04:24 by ruben-dev         #+#    #+#             */
-/*   Updated: 2024/04/18 16:28:49 by ruben-dev        ###   ########.fr       */
+/*   Created: 2024/04/19 10:41:13 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/04/19 13:45:39 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	isspace(int c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -21,7 +28,6 @@ int	ft_atoi(const char *str)
 	resultado = 0;
 	signo = 1;
 	i = 0;
-
 	while (isspace(str[i]))
 		i++;
 	if (str[i] == '+' && str[i + 1] != '-')
@@ -39,11 +45,4 @@ int	ft_atoi(const char *str)
 	}
 	resultado *= signo;
 	return (resultado);
-}
-
-int	isspace(int c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
 }

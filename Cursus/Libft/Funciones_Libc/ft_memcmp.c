@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruben-dev <ruben-dev@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 15:27:02 by ruben-dev         #+#    #+#             */
-/*   Updated: 2024/04/18 15:50:33 by ruben-dev        ###   ########.fr       */
+/*   Created: 2024/04/19 10:44:24 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/04/19 14:09:36 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (n > i)
 	{
 		if (mod_s1[i] != mod_s2[i])
-			return (mod_s1 - mod_s2);
+			return (mod_s1[i] - mod_s2[i]);
 		i++;
 	}
 	return (0);

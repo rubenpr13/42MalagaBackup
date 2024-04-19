@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:40:41 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:45:48 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:53:30 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 int	ft_isalnum(int val)
 {
-	if (val >= '0' && val <= '9')
+	if (ft_isdigit(val) || ft_isalpha(val))
 	{
-		return (1);
-	}
-	if ((val >= 'a' && val <= 'z') || (val >= 'A' && val >= 'Z'))
-	{
-		return (1);
+		return (val);
 	}
 	return (0);
 }
