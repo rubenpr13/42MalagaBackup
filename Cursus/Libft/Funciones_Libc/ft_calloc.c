@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 17:02:26 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/22 17:09:33 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:29:01 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ void	*ft_calloc(size_t count, size_t size)
 	temp = malloc(count * size);
 	i = 0;
 	if (!temp)
-		return (0);
+		return (NULL);
 	while (i < count * size)
 	{
 		temp[i] = 0;
 		i++;
 	}
-	temp[i] = 0;
 	return (temp);
 }
