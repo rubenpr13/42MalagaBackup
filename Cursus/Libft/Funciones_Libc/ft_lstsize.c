@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:44:21 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/05/15 12:44:21 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:30:07 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	*ft_lstsize(t_list *lst)
 {
 	t_list	*temp;
-	int	i;
+	int		i;
 
 	i = 0;
 	temp = lst;

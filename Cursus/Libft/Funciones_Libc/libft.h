@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:46:47 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/23 13:36:15 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:45:33 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 int		ft_isalpha(int val);
 int		ft_isdigit(int val);
@@ -46,6 +40,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *str1, const char *str2);

@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:55:49 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/04/27 13:49:44 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:38:44 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ char	**ft_split(char *s, char c)
 	int		j;
 	int		s_word;
 
-	i = 0;
-	j = 0;
-	s_word = 1;
-	res = ft_calloc((w_count(s, c) + 1), sizeof(char *));
+	init_var(i, j, s_word, res);
 	if (!res)
 		return (NULL);
 	while (i <= ft_strlen(s))
@@ -44,10 +41,18 @@ char	**ft_split(char *s, char c)
 	return (res);
 }
 
+static void	init_var(size_t i, int j, int s_word, char **res)
+{
+	i = 0;
+	j = 0;
+	s_word = 1;
+	res = ft_calloc((w_count(s, c) + 1), sizeof(char *));
+}
+
 static int	w_count(char *s, char c)
 {
 	int	count;
-	int id;
+	int	id;
 
 	id = 0;
 	count = 0;
@@ -58,10 +63,10 @@ static int	w_count(char *s, char c)
 			count++;
 			id = 1;
 		}
-		 else if (*s == c)
-		 {
+		else if (*s == c)
+		{
 			id = 0;
-		 }
+		}
 		s++;
 	}
 	return (count);
@@ -86,7 +91,7 @@ static char	*fill_word(const char *str, int start, int end)
 	return (word);
 }
 
-static void *ft_free(char **str, int count)
+static void	*ft_free(char **str, int count)
 {
 	int	i;
 

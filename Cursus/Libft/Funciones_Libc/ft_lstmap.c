@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:23:18 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/05/15 14:23:18 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:39:34 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*nuevaLista;
+	t_list	*nuevalista;
 	t_list	*objeto;
-	
+
 	if (!lst || !f || !del)
 		return (NULL);
-	nuevaLista = NULL;
+	nuevalista = NULL;
 	while (lst)
 	{
 		objeto = ft_lstnew(f(lst->content));
 		if (!objeto)
 		{
-			ft_lstclear(&nuevaLista, del);
+			ft_lstclear(&nuevalista, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&nuevaLista, objeto);
+		ft_lstadd_back(&nuevalista, objeto);
 		lst = lst->next;
 	}
-	return (nuevaLista);
+	return (nuevalista);
 }
