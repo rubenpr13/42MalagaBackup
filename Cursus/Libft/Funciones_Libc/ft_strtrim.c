@@ -6,64 +6,60 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:12:21 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/06/22 12:53:52 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:43:20 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*strncpy(char *dest, char *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return ((char *)dest);
-}
-
-static size_t	pos_start(const char *s1, const char *set)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	return (i);
-}
-
-static size_t	pos_finish(const char *s1, const char *set)
-{
-	size_t	len;
-
-	len = ft_strlen(s1);
-	while (len > 0 && ft_strchr(set, s1[len]))
-		len--;
-	return (len--);
-}
+static int	to_trim(const char *set, char c);
+static char	*new_str(const char *s1, size_t start, size_t len);
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	size_t	start;
-	size_t	finish;
-	size_t	len_trimmed;
-	char	*temp;
+	int	i;
+	int	j;
 
-	start = pos_start(s1, set);
-	finish = pos_finish(s1, set);
-	len_trimmed = finish - start - 1;
-	temp = (char *)malloc(len_trimmed * sizeof(char));
-	if (!temp)
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	if (ft_strlen(s1) == 0)
+		return (ft_strdup(""));
+	while (to_trim(set, s1[i]))
+		i++;
+	while (to_trim(set, s1[j]))
+		j--;
+	return (new_str(s1, i, j - (i - 1)));
+}
+
+static int	to_trim(const char *set, char c)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static char	*new_str(const char *s1, size_t start, size_t len)
+{
+	char	*str;
+	size_t	i;
+
+	if (len <= 0 || (int)start >= ft_strlen(s1))
+		return (ft_strdup(""));
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
 		return (NULL);
-	strncpy((char *)temp, (char *)s1 + start, len_trimmed);
-	temp[len_trimmed - 1] = 0;
-	return ((char *)temp);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s1[start + i];
+		i++;
+	}
+	return (str);
 }

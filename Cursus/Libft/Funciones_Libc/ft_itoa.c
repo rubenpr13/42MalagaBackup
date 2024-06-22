@@ -6,69 +6,66 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:18:23 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/06/22 12:25:54 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:29:39 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static char	*conv(int len);
+static int	length(long nbr);
+
 char	*ft_itoa(int n)
 {
+	int		len;
 	int		i;
-	int		isnegative;
-	char	*str;
-	char	temp;
+	char	*result;
+	long	nbr;
 
-	i = 0;
-	isnegative = 0;
-	if (n == 0)
+	nbr = n;
+	len = length(nbr);
+	result = conv(len);
+	if (!result)
+		return (NULL);
+	while (nbr != 0)
 	{
-		str[i++] = '0';
-		str[i] = '\0';
-		return (str);
+		result[i] = ((nbr % 10) + 48);
+		nbr = nbr / 10;
+		i--;
 	}
 	if (n < 0)
-	{
-		isnegative = 1;
-		n = -n;
-	}
-	conv(n, str);
-	if (isnegative)
-		str[i++] = '-';
-	str[i] = '\0';
-	reverse(str, i);
-	return (str);
+		result[0] = '-';
+	result[len] = 0;
+	return (result);
 }
 
-static void	conv(int n, char *str)
+static char	*conv(int len)
 {
 	char	*temp;
-	char	*str;
-	int		i;
 
-	i = 0;
-	while (n != 0)
-	{
-		temp = n % 10;
-		str[i++] = temp + '0';
-		n = n / 10;
-	}
+	temp = malloc((len + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
+	temp[0] = '0';
+	return (temp);
 }
 
-static void	reverse(char *str, int lenght)
+static int	length(long nbr)
 {
-	int		start;
-	int		end;
-	char	temp;
+	int	count;
 
-	start = 0;
-	end = lenght - 1;
-	while (start < end)
+	count = 0;
+	if (nbr < 0)
 	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
+		count++;
+		nbr = -nbr;
 	}
+	if (nbr == 0)
+		count++;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		count++;
+	}
+	return (count);
 }
