@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:16:52 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/06/22 14:30:14 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:58:05 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
 	char	*temp;
 	size_t	len;
-	int		i;
+	size_t	i;
 
 	if (!f || !s)
 		return (NULL);
@@ -25,7 +25,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!temp)
 		return (NULL);
-	while (i < (size_t)len)
+	while (i < len)
 	{
 		temp[i] = (*f)(i, s[i]);
 		i++;
