@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:16:52 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/06/25 16:58:05 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:46:15 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	if (!f || !s)
 		return (NULL);
 	len = ft_strlen(s);
-	temp = malloc((len + 1) * sizeof(char *));
+	temp = malloc((len) * sizeof(char) + 1);
 	i = 0;
 	if (!temp)
 		return (NULL);
