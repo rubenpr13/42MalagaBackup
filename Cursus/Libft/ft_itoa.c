@@ -6,19 +6,18 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:18:23 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/06/22 14:29:39 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:41:58 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*conv(int len);
-static int	length(long nbr);
+static char	*conv(long len);
+static long	length(long nbr);
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	int		i;
+	long	len;
 	char	*result;
 	long	nbr;
 
@@ -27,19 +26,22 @@ char	*ft_itoa(int n)
 	result = conv(len);
 	if (!result)
 		return (NULL);
+	if (nbr < 0)
+		nbr = -nbr;
+	result[len] = '\0';
+	len--;
 	while (nbr != 0)
 	{
-		result[i] = ((nbr % 10) + 48);
+		result[len] = (char)(((nbr % 10) + 48));
 		nbr = nbr / 10;
-		i--;
+		len--;
 	}
 	if (n < 0)
 		result[0] = '-';
-	result[len] = 0;
 	return (result);
 }
 
-static char	*conv(int len)
+static char	*conv(long len)
 {
 	char	*temp;
 
@@ -50,9 +52,9 @@ static char	*conv(int len)
 	return (temp);
 }
 
-static int	length(long nbr)
+static long	length(long nbr)
 {
-	int	count;
+	long	count;
 
 	count = 0;
 	if (nbr < 0)
@@ -69,3 +71,10 @@ static int	length(long nbr)
 	}
 	return (count);
 }
+/*
+int main ()
+{
+	char *num = ft_itoa(-4);
+	printf("El número es %s", num);
+	return (0);
+}*/
