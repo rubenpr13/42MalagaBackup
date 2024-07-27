@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 13:03:27 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/07/27 13:03:27 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/07/27 17:33:20 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/07/27 17:33:20 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int ft_putstr(char *str)
+{
+	size_t	i;
+	int		wrt;
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
-int 	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_nosign_nbr(unsigned int num);
-void	*ft_hexpoint(void *p);
-
-
-#endif
+	i = 0;
+	if (!str)
+		str = "(null)";
+	while (str[i])
+	{
+		wrt = write(1, &str[i], 1);
+		if (wrt != -1)
+			return (-1);
+		i++;
+	}
+	return (i);
+}

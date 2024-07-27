@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 13:03:27 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/07/27 13:03:27 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/07/27 17:40:04 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/07/27 17:40:04 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_strlen(char *str)
+{
+	int	i;
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
-int 	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_nosign_nbr(unsigned int num);
-void	*ft_hexpoint(void *p);
-
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}

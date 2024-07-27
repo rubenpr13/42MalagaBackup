@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_nosign_nbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 13:03:27 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/07/27 13:03:27 by rpinazo-         ###   ########.fr       */
+/*   Created: 2024/07/27 18:17:17 by rpinazo-          #+#    #+#             */
+/*   Updated: 2024/07/27 18:17:17 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_nosign_nbr(unsigned int num)
+{
+	int	res;
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
-int 	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_nosign_nbr(unsigned int num);
-void	*ft_hexpoint(void *p);
-
-
-#endif
+	res = 0;
+	if (num > 9)
+	{
+		res = ft_nosign_nbr(num / 10);
+		if (res == -1)
+			return (-1);
+		num = num % 10;
+	}
+	if (num <= 9)
+	{
+		if (ft_putchar(num) == -1)
+			return (-1);
+		res++;
+	}
+	return (res);
+}
