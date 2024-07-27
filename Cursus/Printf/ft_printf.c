@@ -88,7 +88,9 @@ static int	search_type(char f, va_list arguments)
 		return(ft_nosign_nbr(va_arg(arguments, unsigned int)));
 	if (f == "x")
 		// retornar función de conversión + write
+		return (ft_hex_minus(va_arg(arguments, int)));
 	if (f == "X")
 		// retornar función de conversión + write
+		return (ft_hex_mayus(va_arg(arguments, int)));
 	return (0);
 }
