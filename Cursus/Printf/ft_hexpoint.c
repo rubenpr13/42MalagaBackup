@@ -40,13 +40,13 @@ static int	conv_to_hex(char *bstr, unsigned long long n, int c)
 		c = conv_to_hex(bstr, n / len, c);
 		if (c == -1)
 			return (-1);
-		if (write(1, bstr[n % len], 1) == -1)
+		if (write(1, &bstr[n % len], 1) == -1)
 			return (-1);
 		c++;
 	}
 	else if (n < len)
 	{
-		if (write(1, bstr[n], 1) == -1)
+		if (write(1, &bstr[n], 1) == -1)
 			return (-1);
 		c++;
 	}

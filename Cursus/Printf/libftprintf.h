@@ -24,6 +24,7 @@ int 	ft_putstr(char *str);
 int		ft_strlen(char *str);
 int		ft_nosign_nbr(unsigned int num);
 void	*ft_hexpoint(void *p);
-
+int		ft_hex_mayus(int n);
+int		ft_hex_minus(int n);
 
 #endif
