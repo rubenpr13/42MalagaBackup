@@ -14,7 +14,7 @@
 
 static int	conv_to_hex(char *bstr, unsigned long long b, int c);
 
-void	*ft_hexpoint(void *p)
+int	ft_hexpoint(void *p)
 {
 	unsigned long long	pointer;
 	int					i;

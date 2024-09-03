@@ -48,7 +48,10 @@ static int	count_lines(fd)
 	char	*buffer;
 
 	lines = 0;
+	// reservar memoria y control de errores
 	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
 	
 	// bucle para contar lineas del fd
 	while (read(fd, buffer,BUFFER_SIZE ) > 0)
