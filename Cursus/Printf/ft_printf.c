@@ -32,14 +32,14 @@ static int	print_str(const char *str, va_list arguments, int count)
 	int	i;
 
 	i = 0;
-	while (str)
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			// llamada función porcentajes
 			count = print_percent(str, arguments, count, i);
-			return (count);
 			i++;
+			return (count);
 		}
 		else
 		{
@@ -57,13 +57,13 @@ static int print_percent(const char *str, va_list arguments, int count, int i)
 
 	if (str[i + 1] != '%')
 	{
-		arg = count + search_type(str[i + 1], arguments);
+		count += search_type(str[i + 1], arguments);
 		if (arg == -1)
 			return (-1);
 	}
 	else
 	{
-		if (write(1, &str[i], 1) == -1);
+		if (write(1, &str[i], 1) == -1)
 			return (-1);
 	}
 	return (count);
