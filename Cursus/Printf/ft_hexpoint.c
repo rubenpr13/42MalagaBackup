@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	conv_to_hex(char *bstr, unsigned long long b, int c);
 
@@ -32,7 +32,7 @@ int	ft_hexpoint(void *p)
 
 static int	conv_to_hex(char *bstr, unsigned long long n, int c)
 {
-	int	len;
+	unsigned long long	len;
 
 	len = ft_strlen(bstr);
 	if (n >= len)

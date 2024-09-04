@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	ft_hex_long(const char *bstr, int n, int i);
-static int	ft_hex_unsign(const char *bstr, unsigned int n, int i);
+static int	ft_hex_long(char *bstr, int n, int i);
+static int	ft_hex_unsign(char *bstr, unsigned int n, int i);
 
 int	ft_hex_minus(int n)
 {
@@ -28,12 +28,12 @@ int	ft_hex_minus(int n)
 	{
 		i = ft_hex_unsign("0123456789abcdef", n, i);
 	}
-	
+	return (i);
 }
 
-static int	ft_hex_long(const char *bstr, int n, int i)
+static int	ft_hex_long(char *bstr, int n, int i)
 {
-	unsigned long long	len;
+	int	len;
 
 	len = ft_strlen(bstr);
 	if (n >= len)
@@ -54,7 +54,7 @@ static int	ft_hex_long(const char *bstr, int n, int i)
 	return (i);
 }
 
-static int	ft_hex_unsign(const char *bstr, unsigned int n, int i)
+static int	ft_hex_unsign(char *bstr, unsigned int n, int i)
 {
 	unsigned int	len;
 
