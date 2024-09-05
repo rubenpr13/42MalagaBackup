@@ -26,7 +26,7 @@ int	ft_nosign_nbr(unsigned int num)
 	}
 	if (num <= 9)
 	{
-		if (ft_putchar(num) == -1)
+		if (ft_putchar('0' + num) == -1)
 			return (-1);
 		res++;
 	}

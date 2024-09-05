@@ -42,6 +42,7 @@ int	ft_putnbr(int n)
 	}
 	return (let);
 }
+
 static int	int_min(int n)
 {
 	(void)n;

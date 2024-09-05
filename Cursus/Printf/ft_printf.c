@@ -12,85 +12,81 @@
 #include "ft_printf.h"
 
 static int	print_str(const char *str, va_list arguments, int count);
-static int print_percent(const char *str, va_list arguments, int count, int i);
+static int	print_percent(char str, va_list arguments);
 static int	search_type(char f, va_list arguments);
 
-int	ft_printf(const char *str, ...) 
+static int	print_percent(char str, va_list arguments)
 {
-	va_list arguments;
-	int		count;
+	int	let;
 
-	count = 0;
-	va_start(arguments, str);
-	count = print_str(str, arguments, count);
-	va_end(arguments);
-	return (count);
-} 
+	let = 0;
+	if (str != '%')
+	{
+		let = search_type(str, arguments);
+		if (let == -1)
+			return (-1);
+		return (let);
+	}
+	else
+	{
+		if (write (1, &str, 1) != 1)
+			return (-1);
+		return (1);
+	}
+}
 
-static int	print_str(const char *str, va_list arguments, int count)
+static	int	print_str(const char *str, va_list arguments, int let)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			// llamada función porcentajes
-			count = print_percent(str, arguments, count, i);
+			let = let + print_percent(str[i + 1], arguments);
+			if (let == -1)
+				return (-1);
 			i++;
-			return (count);
 		}
 		else
 		{
-			write(1, &str[i], 1);
-			count++;
-			i++;
+			if (write (1, &str[i], 1) != 1)
+				return (-1);
+			let++;
 		}
+		i++;
 	}
-	return (count);
+	return (let);
 }
 
-static int print_percent(const char *str, va_list arguments, int count, int i)
+int	ft_printf(const char *str, ...)
 {
-	int arg;
+	va_list	arguments;
+	int		let;
 
-	if (str[i + 1] != '%')
-	{
-		arg = count + search_type(str[i + 1], arguments);
-		if (arg == -1)
-			return (-1);
-	}
-	else
-	{
-		if (write(1, &str[i], 1) == -1)
-			return (-1);
-	}
-	return (count);
+	let = 0;
+	va_start(arguments, str);
+	let = print_str(str, arguments, let);
+	va_end(arguments);
+	return (let);
 }
 
 static int	search_type(char f, va_list arguments)
 {
 	if (f == 'c')
-		// retornar función de conversión + write
 		return (ft_putchar(va_arg(arguments, int)));
 	if (f == 's')
-		// retornar función de conversión + write
 		return (ft_putstr(va_arg(arguments, char *)));
 	if (f == 'p')
-		// retornar función de conversión + write
 		return (ft_hexpoint(va_arg(arguments, void *)));
 	if (f == 'd' || f == 'i' )
-		// retornar función de conversión + write
-		return(ft_putnbr(va_arg(arguments, int)));
+		return (ft_putnbr(va_arg(arguments, int)));
 	if (f == 'u')
-		// retornar función de conversión + write
-		return(ft_nosign_nbr(va_arg(arguments, unsigned int)));
+		return (ft_nosign_nbr(va_arg(arguments, unsigned int)));
 	if (f == 'x')
-		// retornar función de conversión + write
 		return (ft_hex_minus(va_arg(arguments, int)));
 	if (f == 'X')
-		// retornar función de conversión + write
 		return (ft_hex_mayus(va_arg(arguments, int)));
 	return (0);
 }

@@ -21,7 +21,7 @@
 int		ft_printf(const char *str, ...);
 int		ft_putchar(int c);
 int		ft_putnbr(int n);
-int 	ft_putstr(char *str);
+int		ft_putstr(char *str);
 int		ft_strlen(char *str);
 int		ft_nosign_nbr(unsigned int num);
 int		ft_hexpoint(void *p);

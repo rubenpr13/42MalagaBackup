@@ -20,12 +20,12 @@ int	ft_hexpoint(void *p)
 	int					i;
 
 	i = 0;
-	pointer = (unsigned long long)p;
-	if (write(1,"0x", 2) != 2)
+	pointer = (unsigned long long) p;
+	if (write(1, "0x", 2) != 2)
 		return (-1);
 	i = conv_to_hex("0123456789abcdef", pointer, i);
 	if (i == -1)
-		return(-1);
+		return (-1);
 	i += 2;
 	return (i);
 }
