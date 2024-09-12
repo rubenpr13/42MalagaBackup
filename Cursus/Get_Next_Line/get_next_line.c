@@ -6,7 +6,7 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:32:11 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/08/02 13:32:11 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/09/12 23:04:41 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ static char	**fill_lines(int fd, char **buff, int num_lines)
 
 	
 
-	return(buff);
+	return (buff);
 }
