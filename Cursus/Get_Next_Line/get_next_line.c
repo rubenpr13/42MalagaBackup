@@ -6,90 +6,115 @@
 /*   By: rpinazo- <rpinazo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:32:11 by rpinazo-          #+#    #+#             */
-/*   Updated: 2024/09/13 13:51:15 by rpinazo-         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:45:06 by rpinazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	count_lines(fd);
-static char	**fill_lines(int fd, char **buff, int num_lines);
+char *line_remaining(char *stat_buff);
+char    *ft_line(char *stat_buff);
+char    *read_buff(int fd, char *stat_buff);
 
-int	get_next_line(int fd) 
+
+char    *get_next_line(int fd)
 {
-	static char	**buff;
-	int			num_lines;
+    static char *stat_buff;
+    char        *line;
 
-	// gestión de errores de fd, buffersize y read
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		buff = NULL;
-		return (NULL);
-	}
-	// contar lineas del archivo
-	num_lines = count_lines(fd);
-	//reservar memoria para cada línea 
-	// y gestión de errores
-	buff = malloc(num_lines * sizeof(char *) + 1);
-	if (!buff)
-		return (NULL);
-	// rellenar con las líneas
-	buff = fill_lines(fd, **buff, num_lines);
-	return (buff);
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+    {
+        free(stat_buff);
+        stat_buff = NULL;
+        return (NULL);
+    }
+    stat_buff = read_buff(fd, stat_buff);
+    if (ft_strlen(stat_buff) < 1)
+    {
+        free(stat_buff);
+        stat_buff = NULL;
+        return(NULL);
+    }
+    line = ft_line(stat_buff);
+    stat_buff = line_remaining(stat_buff);
+    return (line);
 }
 
-static int	count_lines(fd)
+char *line_remaining(char *stat_buff)
 {
-	int		lines;
-	int		i;
-	char	*buffer;
+    char    *line;
+    int     i;
+    int     j;
 
-	lines = 0;
-	// reservar memoria y control de errores
-	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
-	// bucle para contar lineas del fd
-	while (read(fd, buffer,BUFFER_SIZE ) > 0)
-	{
-		i = 0;
-		while (i <= BUFFER_SIZE)
-		{
-			if (buffer[i] == '\n')
-				lines++;
-			i++;
-		}
-	}
-	return (lines);
+    i = 0;
+    while (stat_buff[i] && stat_buff[i] != '\n')
+        i++;
+    if (!stat_buff[i])
+    {
+        free(stat_buff);
+        stat_buff = NULL;
+        return (NULL);
+    }
+    line = ft_calloc((ft_strlen(stat_buff) - i + 1), sizeof(char));
+    i++;
+    j = 0;
+    while(stat_buff[i])
+        line[j++] = stat_buff[i++];
+    free(stat_buff);
+    return(line);
 }
 
-static char	**fill_lines(int fd, char **buff, int num_lines)
+char    *ft_line(char *stat_buff)
 {
-	int		i;
-	int		x;
-	int		b;
-	char	*buffer;
+    char    *line;
+    int     i;
 
-	i = 0;
-	x = 0;
-	b = 0;
-	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
-	while (i <= num_lines)
-	{
-	// Contar cuantos bits necesita cada línea para reservar la memoria en buff[i][x]
-		while (read(fd, buffer, BUFFER_SIZE))
-		{
-			if (buffer[b] == '\n')
+    i = 0;
+    if(!stat_buff[i])
+        return(NULL);
+    while (stat_buff[i] && stat_buff[i] != '\n')
+        i++;
+    line = ft_calloc(i + 2, sizeof(char));
+    i = 0;
+    while (stat_buff[i] && stat_buff[i] != '\n')
+    {
+        line[i] = stat_buff[i];
+        i++;
+    }
+    if (stat_buff[i] && stat_buff[i] == '\n')
+    {
+        line[i] = stat_buff[i];
+        i++;
+    }
+    line[i] = '\0';
+    return (line);
+}
 
-		}
-	// reservar memoria para cada línea y gestionar fallos
-	// copiar la línea de buffer[b] a buff[i][x]
-	// escribir la línea
-	// liberar memoria de la línea
-	// pasar a la siguiente
- 	}
+char    *read_buff(int fd, char *stat_buff)
+{
+    char    *buffer;
+    int     result;
 
-	return (buff);
+    if (!stat_buff)
+        stat_buff = ft_calloc(1, sizeof(char));
+    buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+    result = 1;
+    while (result > 0)
+    {
+        result = read(fd, buffer, BUFFER_SIZE);
+        if (result < 0)
+        {
+            free(buffer);
+            buffer = NULL;
+            free(stat_buff);
+            stat_buff = NULL;
+            return (NULL);
+        }
+        buffer[result] = '\0';
+        stat_buff = ft_strjoin(stat_buff, buffer);
+        if (ft_strchr(buffer, '\n'))
+            break;
+    }
+    free(buffer);
+    return (stat_buff);
 }
